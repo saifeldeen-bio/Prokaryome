@@ -1,22 +1,29 @@
 ---
 title: 'Prokaryome: A Comprehensive WDL-Based Workflow for Prokaryotic Genome Assembly, Polishing, and Annotation'
+
 tags:
   - WDL
   - bacterila Genome
   - microbiology
   - bioinformatics
+  - genome assembly
+  - microbiome
+
 authors:
-  - name: Saifeldeen M. Ibrahim
+  - name: Saifeldeen M. Ibrahim 
     orcid: 0000-0003-0143-2596
-    equal-contrib: true
-    affiliation: "1" 
+    corresponding: true
+    affiliation: "1, 2"
 affiliations:
- - name: Bioinformatics Department, The Agricultural Genetic Engineering Research Institute, ARC, Egypt
-   index: 1
-   ror: 00hx57361
- 
+  - name: Bioinformatics Department, The Agricultural Genetic Engineering Research Institute, ARC, Egypt
+    index: 1
+  - name: Biotechnology Department, Faculty of Agriculture, Al-Azhar University, Egypt
+    index: 2
+
 date: 22 November 2024
 bibliography: paper.bib
+
+---
 
 # Summary
 
@@ -32,7 +39,6 @@ Traditional workflows for prokaryotic genome assembly and annotation typically i
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+I would like to acknowledge Dr. Mohamed Farahat, Postdoctoral Fellow in the Computational Biology Division at the University of Cape Town's Faculty of Health Sciences, for his unwavering support and invaluable guidance throughout this project.
 
 # References
