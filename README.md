@@ -1,16 +1,28 @@
 # Prokaryome
 It is a WDL-based tool designed to streamline microbiome data processing for assembling, polishing, annotating, and visualizing prokaryotic genomes. It simplifies the analysis process from raw sequencing reads to high-quality annotated genomes, making it accessible to both novice and experienced researchers. The pipeline begins with quality control (QC) to assess and filter sequencing reads, removing low-quality reads. This is followed by de novo assembly to construct a draft genome, which undergoes four rounds of polishing to enhance accuracy and eliminate residual errors. After assembly refinement, the workflow performs genome annotation, identifying key features such as coding sequences, tRNAs, and rRNAs. The final step produces visualizations and comprehensive reports, providing insights into genome structure and content.
+
 # Workflow
 ![Prokaryome_workflow](https://github.com/user-attachments/assets/7e168e54-72d3-47b5-81ab-9a1cf264ede3)
+
 ## Installation
-Please make sure you have installed the following tools before running the pipeline:
+ 1. Please make sure you have installed the following tools before running the pipeline:
 - `BWA`
 - `Samtools`
 - `Pilon`
 - `Ragtag`
-
 The remaining tools are pulled from Docker Hub, so there is no need to install them separately.
-Inputs
+
+2. Istall `Cromwell` since it is the execution engine that compile and run WDL workflows.
+
+- Using conda
+```bash
+conda install bioconda::cromwell
+```   
+- or you can read the instructions from the website: [Here](https://cromwell.readthedocs.io/en/stable/tutorials/FiveMinuteIntro/)
+
+Once you've installed, you can write and run WDL workflows
+
+## Inputs
 
 1. **Paired-end sequencing reads**:  
    Provided as an array of file pairs (`.fastq.gz`) under the `raw_reads` directory:  
