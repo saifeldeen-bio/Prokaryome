@@ -14,20 +14,20 @@ Inputs
 
 1. **Paired-end sequencing reads**:  
    Provided as an array of file pairs (`.fastq.gz`) under the `raw_reads` directory:  
-   - `raw_reads/SRR00000000_1.fastq.gz` (forward reads)  
-   - `raw_reads/SRR00000000_2.fastq.gz` (reverse reads)
+   - `raw_reads/sample_1.fastq.gz` (forward reads)  
+   - `raw_reads/sample_2.fastq.gz` (reverse reads)
 
 #### The Json input file should be
 
 ```json
 "Prokaryome.raw_reads": [
   {
-    "left": "raw_reads/SRR00000000_1.fastq.gz",
-    "right": "raw_reads/SRR00000000_2.fastq.gz"
+    "left": "raw_reads/sample-1_1.fastq.gz",
+    "right": "raw_reads/sample-1_2.fastq.gz"
   },
   {
-    "left": "raw_reads/SRR00000001_1.fastq.gz",
-    "right": "raw_reads/SRR00000001_2.fastq.gz"
+    "left": "raw_reads/sample-2_1.fastq.gz",
+    "right": "raw_reads/sample-2_2.fastq.gz"
   }
 ]
 ```
@@ -35,21 +35,21 @@ You can add more samples as you need. You've to follow the above structure
 
 2. **For Single-end sequencing reads (I will provid it soon)**:  
    Provided as an array of files (`.fastq.gz`) under the `raw_reads` directory:  
-   - `raw_reads/SRR00000000.fastq.gz`
-   - `raw_reads/SRR11111111.fastq.gz`
+   - `raw_reads/sample.fastq.gz`
+   - `raw_reads/sample.fastq.gz`
 
 #### The Json input file should be
 
 ```json
 "Prokaryome.raw_reads": [
-       "raw_reads/SRR00000000.fastq.gz",
-       "raw_reads/SRR11111111.fastq.gz"
+       "raw_reads/sample.fastq.gz",
+       "raw_reads/sample.fastq.gz"
 ]
 ```
 
 3.  **Reference genome**:  
    Located in the `ref` directory:  
-   - `ref/dmel-all-chromosome-r6.46.fasta`
+   - `ref/reference.fasta`
 
 
 #### Json example
@@ -57,11 +57,11 @@ You can add more samples as you need. You've to follow the above structure
 {
   "Prokaryome.raw_reads": [
     {
-      "left": "raw_reads/SRR00000000_1.fastq.gz",
-      "right": "raw_reads/SRR00000000_2.fastq.gz"
+      "left": "raw_reads/sample_1.fastq.gz",
+      "right": "raw_reads/sample_2.fastq.gz"
     }
   ],
-  "Prokaryome.reference": "ref/dmel-all-chromosome-r6.46.fasta",
+  "Prokaryome.reference": "ref/reference.fasta",
   "Prokaryome.get_draft_script": "extract_draft.py"
 }
 ```
@@ -72,10 +72,10 @@ The workflow expects the following directory structure:
 ```
 project/
 ├── raw_reads/       # Contains paired-end FASTQ files
-│   ├── SRR00000000_1.fastq.gz
-│   └── SRR00000000_2.fastq.gz
+│   ├── sample_1.fastq.gz
+│   └── sample_2.fastq.gz
 ├── ref/             # Contains the reference genome
-│   └── dmel-all-chromosome-r6.46.fasta
+│   └── reference.fasta
 └── extract_draft.py
 ```
 
