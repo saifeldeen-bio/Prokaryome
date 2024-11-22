@@ -1,11 +1,11 @@
 {
   "Prokaryome.raw_reads": [
     {
-      "left": "raw_reads/SRR00000000_1.fastq.gz",
-      "right": "raw_reads/SRR00000000_2.fastq.gz"
+      "left": "raw_reads/sample_1.fastq.gz",
+      "right": "raw_reads/sample_2.fastq.gz"
     }
   ],
-  "Prokaryome.reference": "ref/dmel-all-chromosome-r6.46.fasta",
+  "Prokaryome.reference": "ref/reference.fasta",
   "Prokaryome.get_draft_script": "extract_draft.py"
 }
 
