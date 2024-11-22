@@ -1,5 +1,5 @@
 ---
-title: 'Prokaryome: A Comprehensive WDL-Based Workflow for Prokaryotic Genome Assembly, Polishing, and Annotation'
+title: 'Prokaryome: A Comprehensive WDL-Based Workflow for Prokaryotic Genome Assembly, Polishing, Annotation, and Visualization'
 
 tags:
   - WDL
