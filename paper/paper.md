@@ -30,8 +30,7 @@ bibliography: paper.bib
 `Prokaryome` is an open-source workflow designed to facilitate prokaryotic genome assembly, polishing, annotation, and visualization. Built using the 
 `Workflow Description Language (WDL)`, it streamlines the analysis of paired-end sequencing data from raw reads to polished, annotated genomes. The 
 pipeline includes essential preprocessing steps such as quality control, sequence trimming, and error correction, as well as advanced assembly polishing 
-and genome annotation. `Prokaryome` ensures high-quality genome assemblies while providing visualizations and detailed reports, making it a comprehensive 
-tool for microbiome research and comparative genomics.
+and genome annotation. `Prokaryome` ensures high-quality genome assemblies by incorporating four rounds of polishing for the assembled reads to decrease the error rate of the assembly process, and provide visualizations and detailed reports of the assembly quality and the annotated features, to make it a comprehensive tool for microbiome research and comparative genomics.
 
 # Statement of need
 
