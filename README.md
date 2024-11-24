@@ -10,9 +10,10 @@ It is a WDL-based tool designed to streamline microbiome data processing for ass
 - `Samtools`
 - `Pilon`
 - `Ragtag`
+
 The remaining tools are pulled from Docker Hub, so there is no need to install them separately.
 
-2. Istall `Cromwell` since it is the execution engine that compile and run WDL workflows.
+2. Install `Cromwell` since it is the execution engine that compile and run WDL workflows.
 
 - Using conda
 ```bash
