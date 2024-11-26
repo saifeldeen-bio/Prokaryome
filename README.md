@@ -5,7 +5,19 @@ It is a WDL-based tool designed to streamline microbiome data processing for ass
 ![Prokaryome_workflow](https://github.com/user-attachments/assets/7e168e54-72d3-47b5-81ab-9a1cf264ede3)
 
 ## Installation
- 1. Please make sure you have installed the following tools before running the pipeline:
+ 1. Create conda environment:
+
+```bash
+conda create -n prokaryome
+conda activate prokaryome
+```
+2. configure Conda channels:
+```bash
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+```
 - `BWA`
 - `Samtools`
 - `Pilon`
