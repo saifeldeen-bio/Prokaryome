@@ -1,11 +1,11 @@
 {
   "Prokaryome.raw_reads": [
     {
-      "left": "raw_reads/SRR00000000_1.fastq.gz",
-      "right": "raw_reads/SRR00000000_2.fastq.gz"
+      "left": "raw_reads/sample1_1.fastq.gz",
+      "right": "raw_reads/sample1_2.fastq.gz"
     }
   ],
-  "Prokaryome.reference": "ref/dmel-all-chromosome-r6.46.fasta",
+  "Prokaryome.reference": "ref/reference.fasta",
   "Prokaryome.trim_sliding_window": "4:25",
   "Prokaryome.trim_read_min_length": "36",
   "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
