@@ -18,20 +18,22 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
-- `BWA`
-- `Samtools`
-- `Pilon`
-- `Ragtag`
+2. Install the following tools:
 
-The remaining tools are pulled from Docker Hub, so there is no need to install them separately.
+```bash
+conda install bioconda::bwa
+conda install bioconda::samtools
+conda install bioconda::pilon
+conda install bioconda::ragtag
+```
 
-2. Install `Cromwell` since it is the execution engine that compile and run WDL workflows.
+The remaining tools are pulled from Docker Hub, so there is no need to install them.
 
-- Using conda
+3. Install `Cromwell` since it is the execution engine that compile and run WDL workflows.
+
 ```bash
 conda install bioconda::cromwell
-```   
-- or you can read the instructions from the website: [Here](https://cromwell.readthedocs.io/en/stable/tutorials/FiveMinuteIntro/)
+```
 
 Once you've installed, you can write and run WDL workflows
 
