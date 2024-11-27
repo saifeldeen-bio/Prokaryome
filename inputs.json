@@ -1,11 +1,18 @@
 {
   "Prokaryome.raw_reads": [
     {
-      "left": "raw_reads/sample_1.fastq.gz",
-      "right": "raw_reads/sample_2.fastq.gz"
+      "left": "raw_reads/SRR00000000_1.fastq.gz",
+      "right": "raw_reads/SRR00000000_2.fastq.gz"
     }
   ],
-  "Prokaryome.reference": "ref/reference.fasta",
-  "Prokaryome.get_draft_script": "extract_draft.py"
+  "Prokaryome.reference": "ref/dmel-all-chromosome-r6.46.fasta",
+  "Prokaryome.trim_sliding_window": "4:25",
+  "Prokaryome.trim_read_min_length": "36",
+  "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
+  "Prokaryome.trim_head_crop": "0",
+  "Prokaryome.trim_trailing_crop": "0",
+  "Prokaryome.genovi_status": "complete",
+  "Prokaryome.genovi_plot_title": "anytitle",
+  "Prokaryome.genovi_title_position": "center",
+  "Prokaryome.genovi_color_scheme": "blue"
 }
-
