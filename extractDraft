@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+import sys
+from Bio import SeqIO
+if len(sys.argv) != 3:
+     print("Usage: extract-draft <input_fasta> <sample_id>")
+     sys.exit(1)
+fasta = sys.argv[1]
+sample_id = sys.argv[2]
+allseq = [i for i in SeqIO.parse(fasta, 'fasta')]
+genome = [i for i in allseq if 'RagTag' in i.id]
+SeqIO.write(genome, f'{sample_id}.reordered.fasta', 'fasta')
