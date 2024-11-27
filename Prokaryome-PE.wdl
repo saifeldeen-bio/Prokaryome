@@ -7,7 +7,15 @@ workflow Prokaryome {
   input{
     Array[Pair[File, File]] raw_reads
     File reference
-    File get_draft_script
+    File trim_adapter_file
+    String trim_sliding_window
+    String trim_read_min_length
+    String trim_head_crop
+    String trim_trailing_crop
+    String genovi_status
+    String genovi_plot_title
+    String genovi_title_position
+    String genovi_color_scheme
  }
   scatter (sample in raw_reads) {
       call fastqc {
@@ -18,7 +26,12 @@ workflow Prokaryome {
       call trimmomatic{
         input:
             forward_file = sample.left,
-            reverse_file = sample.right
+            reverse_file = sample.right,
+            sliding_window = trim_sliding_window,
+            read_min_length = trim_read_min_length,
+            adapter = trim_adapter_file,
+            head_crop = trim_head_crop,
+            trailing_crop = trim_trailing_crop
       }
       call assembly{
         input:
@@ -64,7 +77,6 @@ workflow Prokaryome {
       }
       call get_draft_genome {
         input:
-            program = get_draft_script,
             ragtag_draft = generate_draft_genome.draft,
             seqame = sub(basename(sample.left), "_1.fastq.gz$", "")
       }
@@ -76,9 +88,12 @@ workflow Prokaryome {
       call genovi {
         input:
             annotation_dir = annotation.annotation_out,
-            seqame = sub(basename(sample.left), "_1.fastq.gz$", "")
+            seqame = sub(basename(sample.left), "_1.fastq.gz$", ""),
+            status = genovi_status,
+            plot_title = genovi_plot_title,
+            title_position = genovi_title_position,
+            color_scheme = genovi_color_scheme
       }
-
   }
   call multiqc {
     input:
@@ -121,6 +136,11 @@ task trimmomatic {
   input {
     File forward_file
     File reverse_file
+    File adapter
+    String sliding_window
+    String read_min_length
+    String head_crop
+    String trailing_crop
     String forward_basename = sub(basename(forward_file), "_1.fastq.gz$", "")
     String reverse_basename = sub(basename(reverse_file), "_2.fastq.gz$", "")
   }
@@ -129,7 +149,7 @@ task trimmomatic {
     trimmomatic PE -phred33 ~{forward_file} ~{reverse_file} \
     trimmed_reads/Paired/~{forward_basename}_1_paired.fastq trimmed_reads/Unpaired/~{forward_basename}_1_unpaired.fastq \
     trimmed_reads/Paired/~{reverse_basename}_2_paired.fastq trimmed_reads/Unpaired/~{reverse_basename}_2_unpaired.fastq \
-    SLIDINGWINDOW:3:25 MINLEN:36
+    SLIDINGWINDOW:~{sliding_window} MINLEN:~{read_min_length} ILLUMINACLIP:~{adapter}:2:30:10 HEADCROP:~{head_crop} TRAILING:~{trailing_crop}
   >>>
   output {
     File tpf = "trimmed_reads/Paired/~{forward_basename}_1_paired.fastq"
@@ -259,13 +279,12 @@ task generate_draft_genome {
 }
 task get_draft_genome {
   input {
-    File program
     File ragtag_draft
     String seqame
   }
   command <<<
     mkdir ~{seqame}_Final_Draft
-    python ~{program} ~{ragtag_draft}/ragtag.scaffold.fasta ~{seqame}
+    extractDraft ~{ragtag_draft}/ragtag.scaffold.fasta ~{seqame}
     mv *reordered.fasta ~{seqame}_Final_Draft/
   >>>
   output {
@@ -278,7 +297,7 @@ task annotation {
     String seqame
   }
   command <<<
-    prokka --kingdom Bacteria --locustag ~{seqame} --outdir ~{seqame}_annotation --prefix ~{seqame} --addgenes ~{draft_genome}/~{seqame}.reordered.fasta
+    prokka --kingdom Bacteria --outdir ~{seqame}_annotation --prefix ~{seqame} --addgenes ~{draft_genome}/~{seqame}.reordered.fasta
   >>>
   output {
     File annotation_out = "~{seqame}_annotation"
@@ -291,9 +310,13 @@ task genovi {
   input {
     File annotation_dir
     String seqame
+    String status 
+    String plot_title
+    String title_position
+    String color_scheme
   }
   command <<<
-    genovi -i ~{annotation_dir}/~{seqame}.gbk -s complete -o ~{seqame}_out
+    genovi -i ~{annotation_dir}/~{seqame}.gbk -s ~{status} -o ~{seqame}_out -t ~{plot_title} -cs ~{color_scheme} --title_position ~{title_position} --size
   >>>
   output {
     File genovi_out = "~{seqame}_out"
