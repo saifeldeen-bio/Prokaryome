@@ -12,10 +12,6 @@ workflow Prokaryome {
     String trim_read_min_length
     String trim_head_crop
     String trim_trailing_crop
-    String genovi_status
-    String genovi_plot_title
-    String genovi_title_position
-    String genovi_color_scheme
  }
   scatter (sample in raw_reads) {
       call fastqc {
