@@ -10,9 +10,5 @@
   "Prokaryome.trim_read_min_length": "36",
   "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
   "Prokaryome.trim_head_crop": "0",
-  "Prokaryome.trim_trailing_crop": "0",
-  "Prokaryome.genovi_status": "complete",
-  "Prokaryome.genovi_plot_title": "anytitle",
-  "Prokaryome.genovi_title_position": "center",
-  "Prokaryome.genovi_color_scheme": "blue"
+  "Prokaryome.trim_trailing_crop": "0"
 }
