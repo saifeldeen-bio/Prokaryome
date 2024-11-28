@@ -71,10 +71,6 @@ Then Save and exit
   "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
   "Prokaryome.trim_head_crop": "0",
   "Prokaryome.trim_trailing_crop": "0",
-  "Prokaryome.genovi_status": "complete",
-  "Prokaryome.genovi_plot_title": "anytitle",
-  "Prokaryome.genovi_title_position": "center",
-  "Prokaryome.genovi_color_scheme": "blue"
 }
 ```
 1. `Prokaryome.raw_reads`: Your FASTQ files as an array of paired files for paired-end reads.  
@@ -83,10 +79,6 @@ Then Save and exit
 4. `Prokaryome.trim_adapter_file`: The adapter sequences to be removed from your reads. You can add custom sequences to remove. If you do not want to remove any adapters or sequences, provide a blank file.  
 5. `Prokaryome.trim_head_crop`: Trims a specified number of bases from the start of each read, useful for removing overrepresented sequences at the beginning.  
 6. `Prokaryome.trim_trailing_crop`: Trims a specified number of bases from the end of each read.  
-7. `Prokaryome.genovi_status`: Determines whether each sequence is drawn as a unique circular representation (complete) or as a circle with bands for each sequence (draft).  
-8. `Prokaryome.genovi_plot_title`: The title of the image (e.g., strain taxonomic identification).  
-9. `Prokaryome.genovi_title_position`: The position of the title on the image: center, top, or bottom.  
-10. `Prokaryome.genovi_color_scheme`: The color scheme of the genome. Options include: neutral, blue, purple, soil, grayscale, velvet, pastel, ocean, wood, beach, desert, ice, island, forest, toxic, fire, and spring.  
 
 ## Input Directory Structure
 
