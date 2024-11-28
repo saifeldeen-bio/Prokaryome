@@ -18,7 +18,7 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
-2. Install the following tools:
+3. Install the following tools:
 
 ```bash
 conda install bioconda::bwa
@@ -29,7 +29,7 @@ conda install bioconda::ragtag
 
 The remaining tools are pulled from Docker Hub, so there is no need to install them.
 
-3. Install `Cromwell` since it is the execution engine that compile and run WDL workflows.
+4. Install `Cromwell` since it is the execution engine that compile and run WDL workflows.
 
 ```bash
 conda install bioconda::cromwell
@@ -37,73 +37,71 @@ conda install bioconda::cromwell
 
 Once you've installed, you can write and run WDL workflows
 
-## Inputs
+4. Download Prokaryome
 
-1. **Paired-end sequencing reads**:  
-   Provided as an array of file pairs (`.fastq.gz`) under the `raw_reads` directory:  
-   - `raw_reads/sample_1.fastq.gz` (forward reads)  
-   - `raw_reads/sample_2.fastq.gz` (reverse reads)
-
-#### The Json input file should be
-
-```json
-"Prokaryome.raw_reads": [
-  {
-    "left": "raw_reads/sample-1_1.fastq.gz",
-    "right": "raw_reads/sample-1_2.fastq.gz"
-  },
-  {
-    "left": "raw_reads/sample-2_1.fastq.gz",
-    "right": "raw_reads/sample-2_2.fastq.gz"
-  }
-]
+```bash
+git clone https://github.com/saifeldeen-bio/Prokaryome.git
+unzip Prokaryome
+cd Prokaryome/
+sudo mv extractDraft ../path-to/usr/bin
+sudo mv Prokaryome-PE.wdl ../path-to/usr/bin
 ```
-You can add more samples as you need. You've to follow the above structure
-
-2. **For Single-end sequencing reads (I will provid it soon)**:  
-   Provided as an array of files (`.fastq.gz`) under the `raw_reads` directory:  
-   - `raw_reads/sample.fastq.gz`
-   - `raw_reads/sample.fastq.gz`
-
-#### The Json input file should be
-
-```json
-"Prokaryome.raw_reads": [
-       "raw_reads/sample.fastq.gz",
-       "raw_reads/sample.fastq.gz"
-]
+In your home directory run
+```bash
+nano ~/.bashrc
 ```
+Add the following alias to the bashrc file
+```bash
+alias Prokaryome-PE='cromwell run /usr/bin/Prokaryome-PE.wdl'
+```
+Then Save and exit
+## Inputs (.json)
 
-3.  **Reference genome**:  
-   Located in the `ref` directory:  
-   - `ref/reference.fasta`
-
-
-#### Json example
-```json
+```
 {
   "Prokaryome.raw_reads": [
     {
-      "left": "raw_reads/sample_1.fastq.gz",
-      "right": "raw_reads/sample_2.fastq.gz"
+      "left": "raw_reads/SRR00000000_1.fastq.gz",
+      "right": "raw_reads/SRR00000000_2.fastq.gz"
     }
   ],
-  "Prokaryome.reference": "ref/reference.fasta",
-  "Prokaryome.get_draft_script": "extract_draft.py"
+  "Prokaryome.reference": "ref/dmel-all-chromosome-r6.46.fasta",
+  "Prokaryome.trim_sliding_window": "4:25",
+  "Prokaryome.trim_read_min_length": "36",
+  "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
+  "Prokaryome.trim_head_crop": "0",
+  "Prokaryome.trim_trailing_crop": "0",
+  "Prokaryome.genovi_status": "complete",
+  "Prokaryome.genovi_plot_title": "anytitle",
+  "Prokaryome.genovi_title_position": "center",
+  "Prokaryome.genovi_color_scheme": "blue"
 }
 ```
+1. `Prokaryome.raw_reads`: your fastq files, as an array of pair files for paierd-end reads.
+2. `Prokaryome.trim_sliding_window`: Trimming sliding window used in trimmomatic.
+3. `Prokaryome.trim_read_min_length`: min read length used in trimmomatic.
+4. `Prokaryome.trim_adapter_file`: Adapters to be filtered from your reads, and you can add ore custoem sequences to remove. If dont want to remove any adapters or seaeuecens, please provide it as a plank file.
+5. `Prokaryome.trim_head_crop`: Trims a specified number of bases from the start of each read, useful if overrepresented sequences are at the beginning.
+6. `Prokaryome.trim_trailing_crop`: Trims a specified number of bases from the end of each read.
+7. `Prokaryome.genovi_status`: To draw each sequence as a unique circular representation (complete) or as a circle with bands per sequence (draft).
+8. `Prokaryome.genovi_plot_title`: Title of the image (e.g., strain taxomomical identification).
+9. `Prokaryome.genovi_title_position`: center,top, or bottom of the image
+10. `Prokaryome.genovi_color_scheme`: The color scheme of the genome: neutral, blue, purple, soil, grayscale, velvet, pastel, ocean, wood, beach, desert, ice, island, forest, toxic, fire, and spring.
+
 ## Input Directory Structure
 
 The workflow expects the following directory structure:
 
 ```
 project/
+├── input.json       # inputs file
 ├── raw_reads/       # Contains paired-end FASTQ files
 │   ├── sample_1.fastq.gz
 │   └── sample_2.fastq.gz
 ├── ref/             # Contains the reference genome
-│   └── reference.fasta
-└── extract_draft.py
+|    └── reference.fasta
+├── adapters/             # Contains the reference genome
+       └── adapters.fa
 ```
 
 ---
@@ -156,7 +154,7 @@ Install the following software as prerequisites:
 ## Running
 
 ```bash
-java -jar cromwell.jar run Prokaryome-PE.wdl --inputs inputs.json
+Prokaryome -i inputs.json
 ```
 
 ---
