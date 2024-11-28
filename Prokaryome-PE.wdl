@@ -84,11 +84,7 @@ workflow Prokaryome {
       call genovi {
         input:
             annotation_dir = annotation.annotation_out,
-            seqame = sub(basename(sample.left), "_1.fastq.gz$", ""),
-            status = genovi_status,
-            plot_title = genovi_plot_title,
-            title_position = genovi_title_position,
-            color_scheme = genovi_color_scheme
+            seqame = sub(basename(sample.left), "_1.fastq.gz$", "")
       }
   }
   call multiqc {
@@ -306,13 +302,9 @@ task genovi {
   input {
     File annotation_dir
     String seqame
-    String status 
-    String plot_title
-    String title_position
-    String color_scheme
   }
   command <<<
-    genovi -i ~{annotation_dir}/~{seqame}.gbk -s ~{status} -o ~{seqame}_out -t ~{plot_title} -cs ~{color_scheme} --title_position ~{title_position} --size
+    genovi -i ~{annotation_dir}/~{seqame}.gbk -s complete -o ~{seqame}_out
   >>>
   output {
     File genovi_out = "~{seqame}_out"
