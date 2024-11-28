@@ -77,16 +77,16 @@ Then Save and exit
   "Prokaryome.genovi_color_scheme": "blue"
 }
 ```
-1. `Prokaryome.raw_reads`: your fastq files, as an array of pair files for paierd-end reads.
-2. `Prokaryome.trim_sliding_window`: Trimming sliding window used in trimmomatic.
-3. `Prokaryome.trim_read_min_length`: min read length used in trimmomatic.
-4. `Prokaryome.trim_adapter_file`: Adapters to be filtered from your reads, and you can add ore custoem sequences to remove. If dont want to remove any adapters or seaeuecens, please provide it as a plank file.
-5. `Prokaryome.trim_head_crop`: Trims a specified number of bases from the start of each read, useful if overrepresented sequences are at the beginning.
-6. `Prokaryome.trim_trailing_crop`: Trims a specified number of bases from the end of each read.
-7. `Prokaryome.genovi_status`: To draw each sequence as a unique circular representation (complete) or as a circle with bands per sequence (draft).
-8. `Prokaryome.genovi_plot_title`: Title of the image (e.g., strain taxomomical identification).
-9. `Prokaryome.genovi_title_position`: center,top, or bottom of the image
-10. `Prokaryome.genovi_color_scheme`: The color scheme of the genome: neutral, blue, purple, soil, grayscale, velvet, pastel, ocean, wood, beach, desert, ice, island, forest, toxic, fire, and spring.
+1. `Prokaryome.raw_reads`: Your FASTQ files as an array of paired files for paired-end reads.  
+2. `Prokaryome.trim_sliding_window`: The sliding window size used for trimming in Trimmomatic.  
+3. `Prokaryome.trim_read_min_length`: The minimum read length to retain after trimming in Trimmomatic.  
+4. `Prokaryome.trim_adapter_file`: The adapter sequences to be removed from your reads. You can add custom sequences to remove. If you do not want to remove any adapters or sequences, provide a blank file.  
+5. `Prokaryome.trim_head_crop`: Trims a specified number of bases from the start of each read, useful for removing overrepresented sequences at the beginning.  
+6. `Prokaryome.trim_trailing_crop`: Trims a specified number of bases from the end of each read.  
+7. `Prokaryome.genovi_status`: Determines whether each sequence is drawn as a unique circular representation (complete) or as a circle with bands for each sequence (draft).  
+8. `Prokaryome.genovi_plot_title`: The title of the image (e.g., strain taxonomic identification).  
+9. `Prokaryome.genovi_title_position`: The position of the title on the image: center, top, or bottom.  
+10. `Prokaryome.genovi_color_scheme`: The color scheme of the genome. Options include: neutral, blue, purple, soil, grayscale, velvet, pastel, ocean, wood, beach, desert, ice, island, forest, toxic, fire, and spring.  
 
 ## Input Directory Structure
 
@@ -104,7 +104,11 @@ project/
        └── adapters.fa
 ```
 
----
+## Running
+
+```bash
+Prokaryome -i inputs.json
+```
 
 ## Steps and Tools Used
 
@@ -150,14 +154,6 @@ Install the following software as prerequisites:
 - `Samtools` For BAM file handling.  
 - `Pilon` For assembly polishing (not dockerized).  
 - `RagTag` For draft genome generation.  
-
-## Running
-
-```bash
-Prokaryome -i inputs.json
-```
-
----
 
 # Outputs
 
