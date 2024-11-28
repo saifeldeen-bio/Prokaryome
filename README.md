@@ -70,7 +70,7 @@ Then Save and exit
   "Prokaryome.trim_read_min_length": "36",
   "Prokaryome.trim_adapter_file": "adapters/adapters.fa",
   "Prokaryome.trim_head_crop": "0",
-  "Prokaryome.trim_trailing_crop": "0",
+  "Prokaryome.trim_trailing_crop": "0"
 }
 ```
 1. `Prokaryome.raw_reads`: Your FASTQ files as an array of paired files for paired-end reads.  
