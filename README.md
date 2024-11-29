@@ -99,7 +99,7 @@ project/
 ## Running
 
 ```bash
-Prokaryome -i inputs.json
+Prokaryome-PE -i inputs.json
 ```
 
 ## Steps and Tools Used
