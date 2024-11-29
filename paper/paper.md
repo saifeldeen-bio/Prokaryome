@@ -56,7 +56,7 @@ Pilon [@jung2022bwa; @danecek2021twelve; @walker2014pilon], enhancing assembly a
 further refined using a customized python script, annotated with Prokka to identify genomic features [@seemann2014prokka], and lastly, the draft genome is 
 visualized with Genovi, generating comprehensive reports and graphical summaries for downstream analysis  [@cumsille2023genovi].
 
-![Prokaryome Workflow. \label{fig:prokfig}](Prokaryome_workflow.png)
+![Prokaryome Workflow. \label{fig:prokfig}](Prokaryome-workflow.png)
 
 # Acknowledgements
 
