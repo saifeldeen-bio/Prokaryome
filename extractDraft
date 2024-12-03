@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+############################################## About Author #########################################
+# Created by: Saifeldeen M. Ibrahim                                                                 #
+# Emails: saifeldeen.ibrahim [at] ageri.sci.eg or saifeldeenmib99 [at] gmail.com                    #
+# License: MIT License - https://opensource.org/licenses/MIT                                        #
+# Disclaimer: The script comes with no warranty, use at your own risk                               #
+# This script is not intended for commercial use                                                    #
+#####################################################################################################
 import sys
 from Bio import SeqIO
 if len(sys.argv) != 3:
