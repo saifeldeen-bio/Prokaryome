@@ -224,3 +224,7 @@ Install the following software as prerequisites:
 8. Alonge, Michael, et al. "Automated assembly scaffolding using RagTag elevates a new tomato system for high-throughput genome editing." Genome biology 23.1 (2022): 258.
 9. Seemann, Torsten. "Prokka: rapid prokaryotic genome annotation." Bioinformatics 30.14 (2014): 2068-2069.
 10. Cumsille, Andrés, et al. "GenoVi, an open-source automated circular genome visualizer for bacteria and archaea." PLoS Computational Biology 19.4 (2023): e1010998.
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to contribute to this project.
