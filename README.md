@@ -2,7 +2,7 @@
 It is a WDL-based tool designed to streamline microbiome data processing for assembling, polishing, annotating, and visualizing prokaryotic genomes. It simplifies the analysis process from raw sequencing reads to high-quality annotated genomes, making it accessible to both novice and experienced researchers. The pipeline begins with quality control (QC) to assess and filter sequencing reads, removing low-quality reads. This is followed by de novo assembly to construct a draft genome, which undergoes four rounds of polishing to enhance accuracy and eliminate residual errors. After assembly refinement, the workflow performs genome annotation, identifying key features such as coding sequences, tRNAs, and rRNAs. The final step produces visualizations and comprehensive reports, providing insights into genome structure and content.
 
 # Workflow
-![Prokaryome_workflow](paper/workflow.png)
+![workflow](https://github.com/user-attachments/assets/535b8da1-94d6-4654-aeed-243aea99dfff)
 
 ## Installation
  1. Create conda environment:
