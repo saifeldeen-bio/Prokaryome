@@ -1,4 +1,4 @@
-# Prokaryome
+# Prokaryome [![DOI](https://zenodo.org/badge/892218603.svg)](https://doi.org/10.5281/zenodo.17612963)
 It is a WDL-based tool designed to streamline microbiome data processing for assembling, polishing, annotating, and visualizing prokaryotic genomes. It simplifies the analysis process from raw sequencing reads to high-quality annotated genomes, making it accessible to both novice and experienced researchers. The pipeline begins with quality control (QC) to assess and filter sequencing reads, removing low-quality reads. This is followed by de novo assembly to construct a draft genome, which undergoes four rounds of polishing to enhance accuracy and eliminate residual errors. After assembly refinement, the workflow performs genome annotation, identifying key features such as coding sequences, tRNAs, and rRNAs. The final step produces visualizations and comprehensive reports, providing insights into genome structure and content.
 
 # Workflow
